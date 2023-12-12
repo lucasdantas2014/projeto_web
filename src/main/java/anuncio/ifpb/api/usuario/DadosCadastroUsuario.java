@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Pattern;
 @SuppressWarnings("preview")
 public record DadosCadastroUsuario(
 		 
-		 @NotBlank
+        @NotBlank
         String nome,
        
         @NotBlank
@@ -18,6 +18,10 @@ public record DadosCadastroUsuario(
         
         @NotBlank
         String telefone,
+
+        @NotBlank
+        @NotNull
+        String password,
         
         @NotNull 
         @Valid 

@@ -38,6 +38,8 @@ public class Usuario {
     private String telefone;
     private Boolean isAdmin;
 
+	private String password;
+
     @OneToMany(mappedBy = "anunciante")
     private List<Anuncio> anuncios;
     
@@ -50,6 +52,7 @@ public class Usuario {
         this.telefone = dados.telefone();
         this.isAdmin = false;
         this.endereco = new Endereco(dados.endereco());
+		this.password = dados.password();
     }
     
     public Usuario() {
@@ -90,6 +93,14 @@ public class Usuario {
 	}
 	public Boolean getIsAdmin() {
 		return isAdmin;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setIsAdmin(Boolean isAdmin) {

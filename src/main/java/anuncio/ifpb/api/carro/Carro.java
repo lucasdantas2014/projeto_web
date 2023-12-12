@@ -42,8 +42,12 @@ public class Carro {
     private String nome;
     private String cor;
     private String descricao;
-    
-    @OneToOne(cascade = CascadeType.REMOVE)
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private Usuario usuario; // Referência para o usuário proprietário do carro
+
+	@OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name="anuncio_id")
     private Anuncio anuncio;
     
@@ -56,12 +60,15 @@ public class Carro {
         	Anuncio anuncio = new Anuncio();
             anuncio.setId(dados.anuncio_id());	
         }
-        
+		if (dados.user_id() != null) {
+			Usuario usuario = new Usuario();
+			usuario.setId(dados.user_id());
+		}
+		this.usuario = usuario;
         this.anuncio = anuncio;
     }
     
     public Carro() {
-    	
     }
     
 	public Long getId() {
@@ -110,6 +117,13 @@ public class Carro {
 
 	public void setCor(String cor) {
 		this.cor = cor;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public void atualizarInformacoes(DadosAtualizacaoCarro dados) {

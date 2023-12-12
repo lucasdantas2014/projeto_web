@@ -23,7 +23,10 @@ public record DadosCadastroCarro(
         String descricao,
 //        
         @Nullable
-        Long anuncio_id
+        Long anuncio_id,
+
+        @Nullable
+        Long user_id
         
 		) {
 

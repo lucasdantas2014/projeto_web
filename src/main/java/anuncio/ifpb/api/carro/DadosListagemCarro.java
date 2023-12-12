@@ -17,6 +17,7 @@ public record DadosListagemCarro(
 			carro.getDescricao(),
 			(carro.getAnuncio() == null) ? null : carro.getAnuncio().getId()
 			);
-	}
+
+    }
 
 }

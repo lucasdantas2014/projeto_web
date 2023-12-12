@@ -9,7 +9,8 @@ public record DadosAtualizacaoCarro(
         String marca,
         String cor,
         String descricao,
-        Long idAnuncio
+        Long idAnuncio,
+		Long userId
 	) {
 
 	
