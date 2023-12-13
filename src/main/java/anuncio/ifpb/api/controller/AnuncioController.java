@@ -1,5 +1,7 @@
 package anuncio.ifpb.api.controller;
 
+import anuncio.ifpb.api.usuario.Usuario;
+import anuncio.ifpb.api.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,12 +31,15 @@ public class AnuncioController {
 
 	@Autowired
 	private AnuncioRepository repository;
+	@Autowired
+	private UsuarioRepository user_repository;
 	
 	@PostMapping("/cadastrar")
 	@Transactional
 	public void cadastrar(@Valid @RequestBody DadosCadastroAnuncio dados) {
+		Usuario usuario = user_repository.findByEmail(dados.user_email());
 		System.out.println(dados);
-		repository.save(new Anuncio(dados));
+		repository.save(new Anuncio(dados, usuario));
 	}
 
 	@GetMapping("/listar")

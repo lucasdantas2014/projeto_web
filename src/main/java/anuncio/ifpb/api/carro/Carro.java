@@ -51,22 +51,22 @@ public class Carro {
     @JoinColumn(name="anuncio_id")
     private Anuncio anuncio;
     
-    public Carro(DadosCadastroCarro dados) {
+    public Carro(DadosCadastroCarro dados, Usuario usuario) {
         this.marca = dados.marca();
         this.nome = dados.nome();
         this.cor = dados.cor();
         this.descricao = dados.descricao();
-        if (dados.anuncio_id() != null) {
-        	Anuncio anuncio = new Anuncio();
-            anuncio.setId(dados.anuncio_id());	
-        }
-		if (dados.user_id() != null) {
-			Usuario usuario = new Usuario();
-			usuario.setId(dados.user_id());
-		}
 		this.usuario = usuario;
-        this.anuncio = anuncio;
     }
+
+	public Carro(DadosCadastroCarro dados, Usuario usuario, Anuncio anuncio) {
+		this.marca = dados.marca();
+		this.nome = dados.nome();
+		this.cor = dados.cor();
+		this.descricao = dados.descricao();
+		this.usuario = usuario;
+		this.anuncio = anuncio;
+	}
     
     public Carro() {
     }

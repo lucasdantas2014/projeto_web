@@ -20,7 +20,10 @@ public record DadosCadastroAnuncio(
         Float valor,
 //        
         @NotNull
-        Long anunciante_id,
+        String user_email,
+
+        @NotNull
+        Long car_id,
         
         @NotNull 
         @Valid 

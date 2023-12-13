@@ -56,17 +56,15 @@ public class Anuncio {
     @Embedded
     private Endereco endereco;
     
-    public Anuncio(DadosCadastroAnuncio dados) {
+    public Anuncio(DadosCadastroAnuncio dados, Usuario usuario) {
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this.valor = dados.valor();
-        
-        Usuario anunciante = new Usuario();
-        anunciante.setId(dados.anunciante_id());
+
         Carro carro = new Carro();
-        carro.setId(dados.anunciante_id());
+        carro.setId(dados.car_id());
         
-        this.anunciante = anunciante;
+        this.anunciante = usuario;
         this.carro = carro;
         this.endereco = new Endereco(dados.endereco());
     }

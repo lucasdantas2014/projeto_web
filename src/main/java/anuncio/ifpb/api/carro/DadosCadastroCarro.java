@@ -26,7 +26,7 @@ public record DadosCadastroCarro(
         Long anuncio_id,
 
         @Nullable
-        Long user_id
+        String user_email
         
 		) {
 
