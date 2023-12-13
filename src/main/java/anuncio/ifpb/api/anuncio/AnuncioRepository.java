@@ -11,5 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface AnuncioRepository extends JpaRepository<Anuncio, Long> {
     @EntityGraph(value = "Anuncio.anunciante-carro")
     Page<Anuncio> findAll(Pageable paginacao);
+    List<Anuncio> findByCarroId(Long id);
    
 }

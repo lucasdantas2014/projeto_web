@@ -35,12 +35,14 @@ public class CarroController {
 	@Autowired
 	private UsuarioRepository user_repository;
 
+	@Autowired
+	private AnuncioRepository anuncio_repository;
+
 	
 	@PostMapping("/cadastrar")
 	@Transactional
 	public void cadastrar(@Valid @RequestBody DadosCadastroCarro dados) {
 		Usuario usuario = user_repository.findByEmail(dados.user_email());
-		System.out.println("AQUI" + usuario);
 		System.out.println(dados);
 		repository.save(new Carro(dados, usuario));
 	}
@@ -50,6 +52,8 @@ public class CarroController {
 		Usuario usuario = user_repository.findByEmail(user_email);
         return repository.findByUsuario(usuario);
     }
+
+
 
 
 	@PutMapping("/atualizar")
@@ -62,7 +66,8 @@ public class CarroController {
 	@DeleteMapping("/excluir/{id}")
 	@Transactional
 	public void excluir(@PathVariable Long id) {
+		List<Anuncio> anunciosDoCarro = anuncio_repository.findByCarroId(id);
+		anuncio_repository.deleteAll(anunciosDoCarro);
 		repository.deleteById(id);
 	}
-
 }

@@ -11,7 +11,11 @@ public record DadosListagemAnuncio(
 		Long idAnunciante,
 		String nomeAnunciante,
 		String carroNome,
-		Long idCarro		
+		String image_url,
+
+		String telefone_anunciante,
+		Long idCarro,
+		String uf
 		) {
 
 	public DadosListagemAnuncio(Anuncio anuncio) {
@@ -25,7 +29,10 @@ public record DadosListagemAnuncio(
 			anuncio.getAnunciante().getId(),
 			anuncio.getAnunciante().getNome(),
 			anuncio.getCarro().getNome(),
-			anuncio.getCarro().getId()
+			anuncio.getCarro().getImageUrl(),
+			anuncio.getAnunciante().getTelefone(),
+			anuncio.getCarro().getId(),
+			anuncio.getEndereco().getUf()
 			);
 	}
 

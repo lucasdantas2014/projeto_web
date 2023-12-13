@@ -43,6 +43,8 @@ public class Carro {
     private String cor;
     private String descricao;
 
+	private String image_url;
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private Usuario usuario; // Referência para o usuário proprietário do carro
@@ -56,6 +58,7 @@ public class Carro {
         this.nome = dados.nome();
         this.cor = dados.cor();
         this.descricao = dados.descricao();
+		this.image_url = dados.image_url();
 		this.usuario = usuario;
     }
 
@@ -126,10 +129,21 @@ public class Carro {
 		this.usuario = usuario;
 	}
 
+	public String getImageUrl() {
+		return image_url;
+	}
+
+	public void setImageUrl(String image_url) {
+		this.image_url = image_url;
+	}
+
 	public void atualizarInformacoes(DadosAtualizacaoCarro dados) {
         if (dados.marca() != null) {
             this.marca = dados.marca();
         }
+		if (dados.image_url() != null) {
+			this.image_url = dados.image_url();
+		}
         if (dados.descricao() != null) {
             this.descricao = dados.descricao();
         }

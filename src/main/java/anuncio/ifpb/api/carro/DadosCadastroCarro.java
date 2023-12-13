@@ -21,6 +21,9 @@ public record DadosCadastroCarro(
         
         @NotNull
         String descricao,
+
+        @NotNull
+        String image_url,
 //        
         @Nullable
         Long anuncio_id,

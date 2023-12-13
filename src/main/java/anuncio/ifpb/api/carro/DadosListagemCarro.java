@@ -6,6 +6,8 @@ public record DadosListagemCarro(
 		String marca,
 		String cor,
 		String descricao,
+
+		String image_url,
 		Long idAnuncio
 		) {
 
@@ -15,6 +17,7 @@ public record DadosListagemCarro(
 			carro.getMarca(), 
 			carro.getCor(),
 			carro.getDescricao(),
+			carro.getImageUrl(),
 			(carro.getAnuncio() == null) ? null : carro.getAnuncio().getId()
 			);
 
